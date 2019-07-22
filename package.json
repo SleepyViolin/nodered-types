@@ -1,8 +1,9 @@
 {
   "name": "@sleepyviolin/nodered-types",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A little helper to work with NodeRed in TypeScript.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
