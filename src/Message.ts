@@ -15,18 +15,18 @@
  */
 
 export interface Message {
-    payload: any            // contains the main body of the message. For example, the text of a Tweet, the content of a webpage or a sensor reading.
-    title?: any,            // a title giving a good representation of what the message contains.
-    description?: any,      // a brief explanation of what data is contained within the message.
-    data?: any,             // some APIs provide large responses. For example, the Twitter api returns a huge object for each tweet containing many properties beyond just the text. This property can be used to store the original response - allowing access to all of the properties, not just those that get pulled out into msg.payload.
+    payload: any;           // contains the main body of the message. For example, the text of a Tweet, the content of a webpage or a sensor reading.
+    title?: any;            // a title giving a good representation of what the message contains.
+    description?: any;      // a brief explanation of what data is contained within the message.
+    data?: any;             // some APIs provide large responses. For example, the Twitter api returns a huge object for each tweet containing many properties beyond just the text. This property can be used to store the original response - allowing access to all of the properties, not just those that get pulled out into msg.payload.
     location?: {            // an object containing properties representing location information.
         lat: any,
         lon: any,
         name: any,
         city: any,
         country: any
-    },
-    time?: any              // a time. The time should be either JavaScript Date object, or a number of milliseconds since epoch.
+    };
+    time?: any;              // a time. The time should be either JavaScript Date object, or a number of milliseconds since epoch.
 
     /*
     For Fitness/ activity based nodes/ flows:

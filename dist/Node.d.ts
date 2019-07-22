@@ -22,7 +22,7 @@ export declare abstract class Node/*extends EventEmitter*/  implements NodeInter
     name: string;
     type: NodeType;
     z: string;
-    wires: Array<Array<string>>;
+    wires: string[][];
     updateWires: (wires: any) => void;
     context: () => any;
     close: (removed: any) => void;
@@ -31,15 +31,10 @@ export declare abstract class Node/*extends EventEmitter*/  implements NodeInter
     log: (message: any, ...args: any[]) => void;
     warn: (message: any, ...args: any[]) => void;
     error: (logMessage: any, msg?: any) => void;
-    debug: (msg: any, ...args: any[]) => void;
+    debug: (message: any, ...args: any[]) => void;
     trace: (message: any, ...args: any[]) => void;
     metric: (eventname?: any, msg?: any, metricValue?: any) => void;
     status: (status: NodeStatus | ClearNodeStatus) => void;
-    private _wireCount;
-    private _closeCallbacks;
-    private _alias;
-    private _flow;
-    private _on;
     addListener: (event: string | symbol, listener: (...args: any[]) => void) => this;
     on: (event: string | symbol, listener: (...args: any[]) => void) => this;
     once: (event: string | symbol, listener: (...args: any[]) => void) => this;
@@ -48,11 +43,16 @@ export declare abstract class Node/*extends EventEmitter*/  implements NodeInter
     removeAllListeners: (event?: string | symbol) => this;
     setMaxListeners: (n: number) => this;
     getMaxListeners: () => number;
-    listeners: (event: string | symbol) => Function[];
-    rawListeners: (event: string | symbol) => Function[];
+    listeners: (event: string | symbol) => Array<(...args: any[]) => void>;
+    rawListeners: (event: string | symbol) => Array<(...args: any[]) => void>;
     emit: (event: string | symbol, ...args: any[]) => boolean;
     listenerCount: (type: string | symbol) => number;
     prependListener: (event: string | symbol, listener: (...args: any[]) => void) => this;
     prependOnceListener: (event: string | symbol, listener: (...args: any[]) => void) => this;
-    eventNames: () => (string | symbol)[];
+    eventNames: () => Array<string | symbol>;
+    private _wireCount;
+    private _closeCallbacks;
+    private _alias;
+    private _flow;
+    private _on;
 }

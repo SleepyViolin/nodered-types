@@ -27,7 +27,7 @@ export abstract class Node /*extends EventEmitter*/ implements NodeInterface , E
 
     // NodeInterface
     public z: string;
-    public wires: Array<Array<string>>;
+    public wires: string[][];
     public updateWires: (wires: any) => void;
     public context: () => any;
     public close: (removed: any) => void;
@@ -36,17 +36,11 @@ export abstract class Node /*extends EventEmitter*/ implements NodeInterface , E
     public log: (message: any, ...args) => void;
     public warn: (message: any, ...args) => void;
     public error: (logMessage: any, msg?: any) => void;
-    public debug: (msg: any, ...args) => void;
+    public debug: (message: any, ...args) => void;
     public trace: (message: any, ...args) => void;
     public metric: (eventname?: any, msg?: any, metricValue?: any) => void;
     public status: (status: NodeStatus | ClearNodeStatus) => void;
 
-    private _wireCount: number;
-    private _closeCallbacks: Array<Function>;
-    private _alias: string;
-    private _flow: any;
-    private _on: (event: string | symbol, listener: (...args: any[]) => void) => this;
-    
     // EventEmitter
     public addListener: (event: string | symbol, listener: (...args: any[]) => void) => this;
     public on: (event: string | symbol, listener: (...args: any[]) => void) => this;
@@ -56,11 +50,17 @@ export abstract class Node /*extends EventEmitter*/ implements NodeInterface , E
     public removeAllListeners: (event?: string | symbol) => this;
     public setMaxListeners: (n: number) => this;
     public getMaxListeners: () => number;
-    public listeners: (event: string | symbol) => Function[];
-    public rawListeners: (event: string | symbol) => Function[];
+    public listeners: (event: string | symbol) => Array<(...args: any[]) => void>;
+    public rawListeners: (event: string | symbol) => Array<(...args: any[]) => void>;
     public emit: (event: string | symbol, ...args: any[]) => boolean;
     public listenerCount: (type: string | symbol) => number;
     public prependListener: (event: string | symbol, listener: (...args: any[]) => void) => this;
     public prependOnceListener: (event: string | symbol, listener: (...args: any[]) => void) => this;
-    public eventNames: () => (string | symbol)[];
+    public eventNames: () => Array<string | symbol>;
+
+    private _wireCount: number;
+    private _closeCallbacks: Array<(removed: any) => void>;
+    private _alias: string;
+    private _flow: any;
+    private _on: (event: string | symbol, listener: (...args: any[]) => void) => this;
 }

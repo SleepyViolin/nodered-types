@@ -21,8 +21,18 @@
   "author": "Raphael Lauterbach",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@types/event-emitter": "^0.3.3",
     "@types/node": "^12.6.8",
     "tslint": "^5.18.0",
     "typescript": "^3.5.3"
-  }
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SleepyViolin/nodered-types.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SleepyViolin/nodered-types/issues"
+  },
+  "homepage": "https://github.com/SleepyViolin/nodered-types#readme"
 }

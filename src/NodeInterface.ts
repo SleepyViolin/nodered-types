@@ -40,8 +40,8 @@ export interface NodeConfig {
 }
 
 export interface NodeInterface extends NodeConfig {
-    z: string,
-    wires: Array<any>,
+    z: string;
+    wires: any[];
     updateWires(wires: any): void;
     context(): any;
     close(removed: any): void;
@@ -51,7 +51,7 @@ export interface NodeInterface extends NodeConfig {
     log(message: any, ...args): void;
     warn(message: any, ...args): void;
     error(logMessage: any, msg?: any): void;
-    debug(msg: any, ...args): void;
+    debug(message: any, ...args): void;
     trace(message: any, ...args): void;
     metric(eventname?: any, msg?: any, metricValue?: any): void;
     status(status: NodeStatus | ClearNodeStatus): void;
